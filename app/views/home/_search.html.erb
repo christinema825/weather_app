@@ -1,0 +1,12 @@
+<% if flash[:error].present? %>
+  <div class="alert alert-danger">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+<div>   
+    <%= form_tag(get_coordinates_path, method: :get) do %>
+    <%= text_field_tag :address, nil, placeholder: 'Enter address' %>
+    <%= submit_tag 'Get Weather' %>
+    <% end %> 
+</div>
+ 

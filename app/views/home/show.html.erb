@@ -1,0 +1,8 @@
+<div>
+    <h1>Weather Information</h1>
+    <p><%= Date.today.strftime("%A, %B %d")%></p>
+    <img src="<%= @weather.icon_url%>"/>
+    <p><%= @weather.status%></p>
+    <p><%= @weather.description%></p>
+    <p><%= @weather.temperature%> Fahrenheit</p>   
+</div>

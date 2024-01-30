@@ -9,7 +9,7 @@ class Weather
     "https://openweathermap.org/img/wn/#{current_weather[:icon]}@2x.png"
   end
 
-  def status
+  def  
     current_weather[:main]
   end
 
@@ -21,7 +21,7 @@ class Weather
     data.dig(:main, :temp)
   end
 
-  private
+  private 
 
   attr_reader :data
 
