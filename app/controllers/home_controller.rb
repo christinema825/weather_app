@@ -9,7 +9,7 @@ class HomeController < ApplicationController
       cache_key = "coordinates_#{longitude}_#{latitude}"
 
       @cached_indicator = Rails.cache.exist?(cache_key)
-
+#refactor later
       if @cached_indicator
         @data = Rails.cache.read(cache_key)
       else
