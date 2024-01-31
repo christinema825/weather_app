@@ -21,6 +21,14 @@ class Weather
     data.dig(:main, :temp)
   end
 
+  def feels_like_temperature
+    data.dig(:main, :feels_like)
+  end
+
+  def wind_speed
+    data.dig(:wind, :speed)
+  end
+
   def high_temperature
     data.dig(:main, :temp_max)
   end

@@ -1,0 +1,21 @@
+<% if flash[:error].present? %>
+  <div class="alert alert-danger">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+<nav class="navbar navbar-expand-lg p-3 mb-2 bg-info text-white">
+  <div class="container-fluid">
+    <a class="navbar-brand text-white text-decoration-underline" href="<%= root_path %>">Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+      </ul>
+      <%= form_tag(get_coordinates_path, method: :get, class: "d-flex justify-content-center") do %>
+        <%= text_field_tag :address, nil, placeholder: 'Enter address', class: "form-control me-2" %>
+        <%= submit_tag 'Get Weather', class: "btn btn-outline-light" %>
+      <% end %> 
+    </div>
+  </div>
+</nav>

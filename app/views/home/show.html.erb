@@ -1,21 +1,27 @@
-<div>
+<div class="card text-center col-6 mx-auto custom-card custom-light-blue-bg">
+  <div class="card-header">
+    <h4 class="card-title">Weather Information</h4>
+  </div>
+  <div class="card-body custom-bg-light" >
     <% if @cached_indicator %>
-        <p>Data retrieved from cache.</p>
+      <p class="text-white">>>Data retrieved from cache<<</p>
     <% else %>
-        <p>Fresh data retrieved.</p>
+      <p class="text-white">>>Fresh data retrieved<<</p>
     <% end %>
 
-    <h1>Weather Information</h1>
-    <p><%= Date.today.strftime("%A, %B %d") %></p>
-
-    <%if @weather.present? %>
-        <p><%= @weather.city %></p>
-        <img src="<%= @weather.icon_url %>"/>
-        <p>Current Temperature: <%= @weather.current_temperature %> Fahrenheit</p>   
-        <p><%= @weather.description %></p>
-        <p>H: <%= @weather.high_temperature %></p>
-        <p>L: <%= @weather.low_temperature %></p>
-    <%else%>
-        <p>No weather data available.</p>
-    <%end%>
+    <% if @weather.present? %>
+      <h2><i class="fa-solid fa-location-dot"></i></i> <%= @weather.city %></h2>
+      <img src="<%= @weather.icon_url %>" alt="Weather Icon"/>
+      <p class="card-text" style="font-size: 48px;"><%= @weather.current_temperature %> ° F</p>
+      <p class="card-text"><span style="font-size: 14px;">Feel like:</span> <%= @weather.feels_like_temperature %> ° F</p>
+      <p class="card-text"><%= @weather.description %></p>
+      <p class="card-text" style="font-size: 14px;">Wind speed: <%= @weather.wind_speed %> km/h</p>   
+      <p>H: <%= @weather.high_temperature %> | <span style="margin-left: 5px;">L: <%= @weather.low_temperature %></span></p>
+    <% else %>
+      <p class="card-text">No weather data available.</p>
+    <% end %>
+  </div>
+  <div class="card-footer text-body-secondary">
+    <%= Time.now.strftime("%A, %B %d") %> <!-- Adjust as needed for timestamp -->
+  </div>
 </div>
