@@ -4,22 +4,32 @@ class HomeController < ApplicationController
   include Geocoder
 
   def get_weather(latitude, longitude)
-    begin
-      if latitude.present? && longitude.present?
-        @data = CurrentWeatherService.new(latitude: latitude, longitude: longitude, units: 'imperial').call
-        if @data.present? && @data['weather'].present?
-          @weather = Weather.new(@data)
-          render action: 'show'
-        else
-          raise StandardError, 'Invalid weather data'
-        end
+    if latitude.present? && longitude.present?
+
+      cache_key = "coordinates_#{longitude}_#{latitude}"
+
+      @cached_indicator = Rails.cache.exist?(cache_key)
+
+      if @cached_indicator
+        @data = Rails.cache.read(cache_key)
       else
-        raise StandardError, 'Invalid location'
+        @data = CurrentWeatherService.new(latitude: latitude, longitude: longitude, units: 'imperial').call
+        Rails.cache.write(cache_key, @data, expires_in: 30.minutes)
       end
-    rescue StandardError => e
-      flash[:error] = e.message
-      redirect_to root_path
+
+      if @data.present? && @data['weather'].present?
+        puts "DATA INFORMATION:::: #{@data}"
+        @weather = Weather.new(@data)
+        render action: 'show'
+      else
+        raise StandardError, 'Invalid weather data'
+      end
+    else
+      raise StandardError, 'Invalid location'
     end
+  rescue StandardError => e
+    flash[:error] = e.message
+    redirect_to root_path
   end
 
   def get_coordinates

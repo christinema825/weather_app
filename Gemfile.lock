@@ -58,6 +58,7 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
+    base64 (0.2.0)
     bindex (0.8.1)
     bootsnap (1.17.1)
       msgpack (~> 1.2)
@@ -75,6 +76,8 @@ GEM
     childprocess (4.1.0)
     concurrent-ruby (1.2.3)
     crass (1.0.6)
+    dalli (3.2.7)
+      base64
     date (3.3.4)
     dotenv (2.7.5)
     dotenv-rails (2.7.5)
@@ -226,6 +229,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
+  dalli (~> 3.2)
   dotenv-rails
   geocoder
   jbuilder (~> 2.7)

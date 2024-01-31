@@ -9,7 +9,7 @@ class Weather
     "https://openweathermap.org/img/wn/#{current_weather[:icon]}@2x.png"
   end
 
-  def  
+  def status
     current_weather[:main]
   end
 
@@ -17,8 +17,20 @@ class Weather
     current_weather[:description]
   end
 
-  def temperature
+  def current_temperature
     data.dig(:main, :temp)
+  end
+
+  def high_temperature
+    data.dig(:main, :temp_max)
+  end
+
+  def low_temperature
+    data.dig(:main, :temp_min)
+  end
+
+  def city
+    data[:name]
   end
 
   private 

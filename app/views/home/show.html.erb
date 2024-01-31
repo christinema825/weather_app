@@ -1,8 +1,21 @@
 <div>
+    <% if @cached_indicator %>
+        <p>Data retrieved from cache.</p>
+    <% else %>
+        <p>Fresh data retrieved.</p>
+    <% end %>
+
     <h1>Weather Information</h1>
-    <p><%= Date.today.strftime("%A, %B %d")%></p>
-    <img src="<%= @weather.icon_url%>"/>
-    <p><%= @weather.status%></p>
-    <p><%= @weather.description%></p>
-    <p><%= @weather.temperature%> Fahrenheit</p>   
+    <p><%= Date.today.strftime("%A, %B %d") %></p>
+
+    <%if @weather.present? %>
+        <p><%= @weather.city %></p>
+        <img src="<%= @weather.icon_url %>"/>
+        <p>Current Temperature: <%= @weather.current_temperature %> Fahrenheit</p>   
+        <p><%= @weather.description %></p>
+        <p>H: <%= @weather.high_temperature %></p>
+        <p>L: <%= @weather.low_temperature %></p>
+    <%else%>
+        <p>No weather data available.</p>
+    <%end%>
 </div>
