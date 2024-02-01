@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   def get_coordinates
     address = params[:address]
     results = Geocoder.search(address)
-    
+
     if results.present?
       coordinates = results.first.coordinates
       latitude = coordinates[0]
@@ -14,7 +14,7 @@ class HomeController < ApplicationController
       get_weather(latitude, longitude)
 
       flash.clear if performed?
-      
+
       render :show unless performed?
     else
       flash[:error] = 'Location not found. Please enter a valid address.'
@@ -22,11 +22,11 @@ class HomeController < ApplicationController
     end
   end
 
-def get_weather(latitude, longitude)
+  def get_weather(latitude, longitude)
     if latitude.present? && longitude.present?
       cache_key = "coordinates_#{longitude}_#{latitude}"
       @cached_indicator = Rails.cache.exist?(cache_key)
-    
+
       if @cached_indicator
         @data = Rails.cache.read(cache_key)
       else
@@ -35,18 +35,17 @@ def get_weather(latitude, longitude)
       end
       if @data.present? && @data['weather'].present?
         @weather = Weather.new(@data)
-        
+
       else
         flash[:error] = 'Invalid weather data'
         redirect_to root_path
       end
     else
-        flash[:error] = 'Invalid location'
-        redirect_to root_path
+      flash[:error] = 'Invalid location'
+      redirect_to root_path
     end
   rescue StandardError => e
     flash[:error] = e.message
     redirect_to root_path
   end
 end
-

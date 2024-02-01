@@ -24,11 +24,13 @@ RSpec.describe HomeController, type: :controller do
     end
 
     context 'when valid coordinates are found' do
-      let(:results) { double('geocoder_results', present?: true, first: double('result', coordinates: [latitude, longitude])) }
+      let(:results) do
+        double('geocoder_results', present?: true, first: double('result', coordinates: [latitude, longitude]))
+      end
 
       before do
         allow(Geocoder).to receive(:search).and_return(results)
-        allow(controller).to receive(:get_weather) # Stub the private method
+        allow(controller).to receive(:get_weather)
       end
 
       include_examples 'coordinates behavior'
@@ -66,7 +68,8 @@ RSpec.describe HomeController, type: :controller do
 
     it 'calls get_weather with correct coordinates' do
       allow(Rails.cache).to receive(:exist?).and_return(false)
-      allow(CurrentWeatherService).to receive(:new).and_return(instance_double('CurrentWeatherService', call: cached_data))
+      allow(CurrentWeatherService).to receive(:new).and_return(instance_double('CurrentWeatherService',
+                                                                               call: cached_data))
 
       expect(controller).to receive(:get_weather).with(latitude, longitude)
       get :get_coordinates, params: { address: valid_address }

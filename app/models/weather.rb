@@ -41,7 +41,7 @@ class Weather
     data[:name]
   end
 
-  private 
+  private
 
   attr_reader :data
 
