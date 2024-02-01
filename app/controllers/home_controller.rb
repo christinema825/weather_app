@@ -12,13 +12,15 @@ class HomeController < ApplicationController
       latitude = coordinates[0]
       longitude = coordinates[1]
       get_weather(latitude, longitude)
+
+      flash.clear if performed?
+      
+      render :show unless performed?
     else
       flash[:error] = 'Location not found. Please enter a valid address.'
       redirect_to root_path
     end
   end
-
-private
 
 def get_weather(latitude, longitude)
     if latitude.present? && longitude.present?
@@ -31,10 +33,9 @@ def get_weather(latitude, longitude)
         @data = CurrentWeatherService.new(latitude: latitude, longitude: longitude, units: 'imperial').call
         Rails.cache.write(cache_key, @data, expires_in: 30.minutes)
       end
-      puts "DATAAAAA: #{@data}"
       if @data.present? && @data['weather'].present?
         @weather = Weather.new(@data)
-        render action: 'show'
+        
       else
         flash[:error] = 'Invalid weather data'
         redirect_to root_path
