@@ -30,7 +30,7 @@ ForecastNow is a Ruby on Rails application that allows users to retrieve and dis
 - Ruby on Rails
 - Geocoder gem
 - [OpenWeatherMap API Key](https://openweathermap.org/appid) (required for weather data)
-- [Geocoding API](https://developers.google.com/maps/documentation/geocoding/get-api-key) (required for coordinates data)
+- [Geocoding API Key](https://developers.google.com/maps/documentation/geocoding/get-api-key) (required for coordinates data)
 
 ## Installation
 1. Clone the repository: `git clone https://github.com/christinema825/weather_app.git`
