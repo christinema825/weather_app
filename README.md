@@ -13,7 +13,6 @@ https://github.com/christinema825/weather_app/assets/84738911/db56e35d-292c-454c
 - [Design Patterns](#design-patterns)
 - [Naming Conventions](#naming-conventions)
 - [Encapsulation](#encapsulation)
-- [Code Re-Use](#code-re-use)
 - [UI](#ui)
 
 ## Overview
@@ -73,10 +72,7 @@ The project includes comprehensive unit tests to ensure the reliability of the c
 Follow industry-standard naming conventions for variables, classes, and methods to ensure code clarity and consistency.
 
 ## Encapsulation
-Encapsulation is employed to keep methods focused and to prevent one method from performing too many tasks.
-
-## Code Re-Use
-Leverage code re-use where applicable to maintain a clean and modular codebase. For example, the `Weather class` in the model is being called within the `get_weather` method in the `Home Controller` to parse out the data and provide a clean and abstracted interface for accessing weather information.
+Encapsulation is employed to keep methods focused and to prevent one method from performing too many tasks. For example, the `Weather class` in the model is being called within the `get_weather` method in the `Home Controller` to parse out the data and provide a clean and abstracted interface for accessing weather information.
 ```
   def get_weather(latitude, longitude)
     if latitude.present? && longitude.present?
