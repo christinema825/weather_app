@@ -1,5 +1,5 @@
 # ForecastNow - Weather Forecast Application
----
+
 ## Table of Contents
 - [Overview](#overview)
 - [Features](#features)
@@ -13,7 +13,7 @@
 - [Encapsulation](#encapsulation)
 - [Code Re-Use](#code-re-use)
 - [UI](#ui)
----
+
 ## Overview
 ForecastNow is a Ruby on Rails application that allows users to retrieve and display weather forecast details based on a provided address. The application utilizes the OpenWeatherMap API to fetch real-time weather data.
 
