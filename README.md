@@ -76,7 +76,15 @@ Follow industry-standard naming conventions for variables, classes, and methods 
 Encapsulation is employed to keep methods focused and to prevent one method from performing too many tasks.
 
 ## Code Re-Use
-Leverage code re-use where applicable to maintain a clean and modular codebase.
+Leverage code re-use where applicable to maintain a clean and modular codebase. For example, the `Weather class` in the model is being called within the `get_weather` method in the `Home Controller` to parse out the data and provide a clean and abstracted interface for accessing weather information.
+```
+  def get_weather(latitude, longitude)
+    if latitude.present? && longitude.present?
+      cache_key = "coordinates_#{longitude}_#{latitude}"
+    ... some code here ...
+      if @data.present? && @data['weather'].present?
+        @weather = Weather.new(@data)
+```
 
 ## UI
 The application features a simple and user-friendly UI allowing users to input an address and retrieve weather information. The UI also indicates whether the data is retrieved from the cache.
