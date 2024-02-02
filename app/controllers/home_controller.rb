@@ -14,9 +14,9 @@ class HomeController < ApplicationController
       longitude = coordinates[1]
       get_weather(latitude, longitude)
 
-      flash.clear if performed?
+      return if performed?
 
-      render :show unless performed?
+      render :show
     else
       # If no coordinates found, set flash error and redirect to root_path
       flash[:error] = 'Location not found. Please enter a valid address.'
