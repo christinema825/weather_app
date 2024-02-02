@@ -54,13 +54,20 @@ The project includes comprehensive unit tests to ensure the reliability of the c
 
 ## Design Patterns
 1. Service Object Pattern:
-**Implementation**: The CurrentWeatherService class follows the Service Object pattern. It encapsulates the logic for fetching weather data from the OpenWeatherMap API. This promotes separation of concerns, making the code more modular and easier to maintain.
+   
+   **Implementation**: The CurrentWeatherService class follows the Service Object pattern. It encapsulates the logic for fetching weather data from the OpenWeatherMap API. This promotes separation of concerns, making the code more modular and easier to maintain.
+
 2. Decorator Pattern:
-**Implementation**: The Weather class can be seen as a decorator for the raw weather data obtained from the API. It provides methods to extract specific details and enhances the usability of the weather data by encapsulating it with methods like icon_url, status, etc.
+   
+   **Implementation**: The Weather class can be seen as a decorator for the raw weather data obtained from the API. It provides methods to extract specific details and enhances the usability of the weather data by encapsulating it with methods like icon_url, status, etc.
+
 3. Factory Pattern (Partially Applied):
-**Implementation**: The use of CurrentWeatherService.new in the HomeController can be seen as a basic form of a Factory Pattern. It encapsulates the instantiation of the service object, providing a consistent way to create instances.
+   
+   **Implementation**: The use of CurrentWeatherService.new in the HomeController can be seen as a basic form of a Factory Pattern. It encapsulates the instantiation of the service object, providing a consistent way to create instances.
+
 4. MVC (Model-View-Controller) Pattern:
-**Implementation**: The entire Rails application adheres to the MVC pattern, where the HomeController serves as the controller, the Weather class encapsulates the model-like behavior, and the views (HTML/ERB files) represent the views. This pattern promotes separation of concerns and maintainability.
+   
+   **Implementation**: The entire Rails application adheres to the MVC pattern, where the HomeController serves as the controller, the Weather class encapsulates the model-like behavior, and the views (HTML/ERB files) represent the views. This pattern promotes separation of concerns and maintainability.
 
 ## Naming Conventions
 Follow industry-standard naming conventions for variables, classes, and methods to ensure code clarity and consistency.
