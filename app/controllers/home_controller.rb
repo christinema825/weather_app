@@ -40,6 +40,7 @@ class HomeController < ApplicationController
         @data = CurrentWeatherService.new(latitude: latitude, longitude: longitude, units: 'imperial').call
         Rails.cache.write(cache_key, @data, expires_in: 30.minutes)
       end
+      
       if @data.present? && @data['weather'].present?
         # Create a Weather object for better abstraction and easy access to weather details
         @weather = Weather.new(@data)
