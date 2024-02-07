@@ -43,7 +43,6 @@ class HomeController < ApplicationController
       if @data.present? && @data['weather'].present?
         # Create a Weather object for better abstraction and easy access to weather details
         @weather = Weather.new(@data)
-
       else
         # If weather data is invalid, set flash error and redirect to root_path
         flash[:error] = 'Invalid weather data'
